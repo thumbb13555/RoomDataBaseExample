@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         /**設置修改資料的事件*/
         btModify.setOnClickListener((v) -> {
             new Thread(() -> {
-                if(nowSelectedData ==null) return;
+                if(nowSelectedData ==null) return;//如果目前沒前台沒有資料，則以下程序不執行
                 String name = edName.getText().toString();
                 String phone = edPhone.getText().toString();
                 String hobby = edHobby.getText().toString();
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 String phone = edPhone.getText().toString();
                 String hobby = edHobby.getText().toString();
                 String elseInfo = edElseInfo.getText().toString();
-                if (name.length() == 0) return;
+                if (name.length() == 0) return;//如果名字欄沒填入任何東西，則不執行下面的程序
                 MyData data = new MyData(name, phone, hobby, elseInfo);
                 DataBase.getInstance(this).getDataUao().insertData(data);
                 runOnUiThread(() -> {
