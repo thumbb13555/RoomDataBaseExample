@@ -21,8 +21,8 @@ public interface DataUao {
     void insertData(MyData myData);
 
     /**複雜(?)新增所有資料的方法*/
-    @Query("INSERT INTO "+tableName+"(name,phone,hobby,elseInfo) VALUES(:name,:phone,:hobby,:elseData)")
-    void insertData(String name,String phone,String hobby,String elseData);
+    @Query("INSERT INTO "+tableName+"(name,phone,hobby,elseInfo,age) VALUES(:name,:phone,:hobby,:elseData,:age)")
+    void insertData(String name,String phone,String hobby,String elseData,int age);
 
     /**=======================================================================================*/
     /**撈取全部資料*/
@@ -39,8 +39,8 @@ public interface DataUao {
     void updateData(MyData myData);
 
     /**複雜(?)更新資料的方法*/
-    @Query("UPDATE "+tableName+" SET name = :name,phone=:phone,hobby=:hobby,elseInfo = :elseInfo WHERE id = :id" )
-    void updateData(int id,String name,String phone,String hobby,String elseInfo);
+    @Query("UPDATE "+tableName+" SET name = :name,phone=:phone,hobby=:hobby,elseInfo = :elseInfo,age= :age WHERE id = :id" )
+    void updateData(int id,String name,String phone,String hobby,String elseInfo,int age);
 
     /**=======================================================================================*/
     /**簡單刪除資料的方法*/

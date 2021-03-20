@@ -15,20 +15,23 @@ public class MyData {
     private String phone;
     private String hobby;
     private String elseInfo;
+    private int age;
 
-    public MyData(String name, String phone, String hobby, String elseInfo) {
+    public MyData(String name, String phone, String hobby, String elseInfo,int age) {
         this.name = name;
         this.phone = phone;
         this.hobby = hobby;
         this.elseInfo = elseInfo;
+        this.age = age;
     }
     @Ignore//如果要使用多形的建構子，必須加入@Ignore
-    public MyData(int id,String name, String phone, String hobby, String elseInfo) {
+    public MyData(int id,String name, String phone, String hobby, String elseInfo,int age) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.hobby = hobby;
         this.elseInfo = elseInfo;
+        this.age = age;
     }
 
     public int getId() {
@@ -69,5 +72,13 @@ public class MyData {
 
     public void setElseInfo(String elseInfo) {
         this.elseInfo = elseInfo;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

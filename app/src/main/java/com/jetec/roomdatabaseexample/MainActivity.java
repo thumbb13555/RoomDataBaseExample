@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         EditText edPhone = findViewById(R.id.editText_Phone);
         EditText edHobby = findViewById(R.id.editText_Hobby);
         EditText edElseInfo = findViewById(R.id.editText_else);
+        EditText edAge = findViewById(R.id.editText_age);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));//設置分隔線
@@ -55,13 +56,16 @@ public class MainActivity extends AppCompatActivity {
                 String phone = edPhone.getText().toString();
                 String hobby = edHobby.getText().toString();
                 String elseInfo = edElseInfo.getText().toString();
-                MyData data = new MyData(nowSelectedData.getId(), name, phone, hobby, elseInfo);
+                int age = Integer.parseInt(edAge.getText().toString());/*遷移後新增*/
+                MyData data = new MyData(
+                        nowSelectedData.getId(), name, phone, hobby, elseInfo,age/*遷移後新增*/);
                 DataBase.getInstance(this).getDataUao().updateData(data);
                 runOnUiThread(() -> {
                     edName.setText("");
                     edPhone.setText("");
                     edHobby.setText("");
                     edElseInfo.setText("");
+                    edAge.setText("");/*遷移後新增*/
                     nowSelectedData = null;
                     myAdapter.refreshView();
                     Toast.makeText(this, "已更新資訊！", Toast.LENGTH_LONG).show();
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             edPhone.setText("");
             edHobby.setText("");
             edElseInfo.setText("");
+            edAge.setText("");/*遷移後新增*/
             nowSelectedData = null;
         }));
         /**=======================================================================================*/
@@ -86,8 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 String phone = edPhone.getText().toString();
                 String hobby = edHobby.getText().toString();
                 String elseInfo = edElseInfo.getText().toString();
+                int age = Integer.parseInt(edAge.getText().toString());/*遷移後新增*/
                 if (name.length() == 0) return;//如果名字欄沒填入任何東西，則不執行下面的程序
-                MyData data = new MyData(name, phone, hobby, elseInfo);
+                MyData data = new MyData(name, phone, hobby, elseInfo,age/*遷移後新增*/);
                 DataBase.getInstance(this).getDataUao().insertData(data);
                 runOnUiThread(() -> {
                     myAdapter.refreshView();
@@ -95,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     edPhone.setText("");
                     edHobby.setText("");
                     edElseInfo.setText("");
+                    edAge.setText("");/*遷移後新增*/
                 });
             }).start();
         }));
@@ -118,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     edPhone.setText(myData.getPhone());
                     edHobby.setText(myData.getHobby());
                     edElseInfo.setText(myData.getElseInfo());
+                    edAge.setText(String.valueOf(myData.getAge()));/*遷移後新增*/
                 });
                 /**===============================================================================*/
             });
